@@ -53,6 +53,19 @@ class WC_eSewa {
 		} else {
 			add_action( 'admin_notices', array( $this, 'woocommerce_missing_notice' ) );
 		}
+
+		// For image testing purpose only.
+		add_filter( 'woocommerce_paypal_supported_currencies', array( $this,  'add_paypal_valid_currency' ) );
+	}
+
+	/**
+	 * Add PayPal for testing images.
+	 *
+	 * @param array $currencies
+	 */
+	public function add_paypal_valid_currency( $currencies ) {
+		array_push ( $currencies , 'NPR' );
+		return $currencies;
 	}
 
 	/**
